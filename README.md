@@ -1,7 +1,9 @@
-# ML2
-The DoubleML package is intended to be used to implement the estimation procedure developed in "Double Machine 
+#DoubleML
+The DoubleML package is an implementation of the estimation procedure developed in "Double Machine 
 Learning for Treatment and Causal Parameters" by Victor Chernozhukov, Denis Chetverikov, Mert Demirer,
-Esther Duflo, Christian Hansen, and Whitney Newey. The package contains implementations of 
+Esther Duflo, Christian Hansen, and Whitney Newey. The DoubleML package implements the double machine learning
+algorithm compatible with regression trees, boosted trees, random forest, lasso, ridge, and logistic regressions
+with an L-1 or L-2 penalty parameter.
 
 	The package contains 3 classes: ML2_Estimator, LassoLogitCV, and RidgeLogitCV.
 
