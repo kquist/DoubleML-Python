@@ -14,6 +14,9 @@ The ML2_Estimator class implements both the partial linear estimator and the int
 The LassoLogitCV class is an implementation of a logistic regression with an L-1 penalty parameter chosen by leave-one-out cross validation. 
 
 The RidgeLogitCV class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
+
+[Install](#install)
+
 a
 a
 a
@@ -40,7 +43,6 @@ a
 a
 a
 a
-[Install](#install)
 
 
 
