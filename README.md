@@ -7,12 +7,24 @@ The Double ML package has options to implement the double mahcine learning estim
 the following machine learning techniques: regression trees, boosted trees, random forest, lasso,
 ridge, or logistic regressionswith an L-1 or L-2 penalty parameter.
 
-	The package contains 3 classes: ML2_Estimator, LassoLogitCV, and RidgeLogitCV.
+The package contains 3 classes: ML2_Estimator, LassoLogitCV, and RidgeLogitCV.
 
-	The ML2_Estimator class implements both the partial linear estimator and the interactive estimator outlined in Chernozhukov et. al.
-	This class can use a variety of machine learning  echniques (Regression Trees, Ada Boosted Trees, Random Forest, Lasso,
-	Ridge, and Logistic regression with either an L-1 penalty parameter or an L-2 penalty parameter).
+The ML2_Estimator class implements both the partial linear estimator and the interactive estimator outlined in Chernozhukov et. al.
 
-	The LassoLogitCV class is an implementation of a logistic regression with an L-1 penalty parameter chosen by leave-one-out cross validatoion
+The LassoLogitCV class is an implementation of a logistic regression with an L-1 penalty parameter chosen by leave-one-out cross validation. 
 
-	The RidgeLogitCV class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
+The RidgeLogitCV class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
+[Install](#install)
+
+
+
+
+
+
+
+
+
+
+
+Install
+=======
