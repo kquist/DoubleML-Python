@@ -15,44 +15,10 @@ The LassoLogitCV class is an implementation of a logistic regression with an L-1
 
 The RidgeLogitCV class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
 
+#Table of Contents
 [Install](#install)
-
-a
-a
-a
-
-a
-aa
-
-a
-a
-a
-a
-a
-a
-a
-a
-a
-
-a
-a
-a
-a
-a
-a
-a
-a
-a
-
-
-
-
-
-
-
-
-
-
-
+[API](#API)
 Install
+=======
+API
 =======
