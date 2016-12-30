@@ -21,6 +21,7 @@ The RidgeLogitCV class is an implementation of a logistic regression with an L-2
 [API](#api)
 
 [API](#api)
+
 Install
 =======
 API
