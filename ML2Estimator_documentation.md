@@ -1,4 +1,7 @@
 #Class: ML2_Estimator
+The DoubleML package is intended to be used to implement the estimation procedure developed in ["Double Machine 
+Learning for Treatment and Causal Parameters"](#https://arxiv.org/abs/1608.00060) by Victor Chernozhukov, Denis Chetverikov, Mert Demirer,
+Esther Duflo, Christian Hansen, and Whitney Newey
 #Parameters:
 
 - method: str, optional (default="Tree"). This determines which machine learning estimation technique will be employed for estimates with a non-binary outcome variable. Options include : "Tree" (for regression tree), "Boosted Tree" (for ada boosted tree), "Random Forest", "Lasso", and "Ridge"
@@ -39,7 +42,7 @@
 
 - define_ridge_logit(self,binary_outcome): Initializes and returns an instance of the RidgeLogitCV class. If binary_outcome is True, then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
 
-- define_model(self,binary_outcome): If binary_outcome is  false, this method will initialize and return a member of class type self.method with self.method_options If binary_outcome is False, this method will initialize and return a member of class type self.method_binary with self.method_options_binary
+- define_model(self,binary_outcome): Initializes an instance of a  machine learning method and returns it. If binary_outcome is  false, this method will initialize and return a member of class type self.method with self.method_options If binary_outcome is False, this method will initialize and return a member of class type self.method_binary with self.method_options_binary
 
 - fit(self,X,Y,binary_outcome): This method fits a machine learning method using regressors X and the outcome variable Y. The parameters are as follows: 
 		
