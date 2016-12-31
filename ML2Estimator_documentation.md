@@ -67,24 +67,28 @@ Lasso
 =======
 The Lasso option is an implementation of sklearn's LassoCV class found [here](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV). The L-1 penalty parameter is chosen using k-fold cross validation. The valid method_option dictionary entries are as follows:
 
-- eps : float, optional. Default=1E-3. Length of the path. i.e. "eps=1e-3" means that "alpha_min/alpha_max=1e-3".
-		    
-- n_alphas : int, optional. Default=100. Number of alphas along the regularization path
-
-- alphas : numpy array, optional, Default=None. List of alphas where to compute the models. If ``None`` alphas are set automatically
-		    
-- precompute : True | False | 'auto' | array-like. Default='auto'. Whether to use a precomputed Gram matrix to speed up calculations. If set to ``'auto'`` let us decide. The Gram matrix can also be passed as argument.
-		    
-- max_iter : int, optional. Default=5000. The maximum number of iterations
-
-- tol : float, optional. Default=1E-4. The tolerance for the optimization: if the updates are smaller than "tol", the optimization code checks the dual gap for optimality and continues until it is smaller than "tol".
-
-- cv : int, cross-validation generator or an iterable, optional. Default=10. 
-
-	Determines the cross-validation splitting strategy.
-	
-	Possible inputs for cv are:
-	
+			eps : float, optional. Default=1E-3
+		        Length of the path. "eps=1e-3" means that
+		        ``alpha_min / alpha_max = 1e-3".
+		    n_alphas : int, optional. Default=100
+		        Number of alphas along the regularization path
+		    alphas : numpy array, optional, Default=None
+		        List of alphas where to compute the models. 
+		        If ``None`` alphas are set automatically
+		    precompute : True | False | 'auto' | array-like. Default='auto'
+		        Whether to use a precomputed Gram matrix to speed up
+		        calculations. If set to ``'auto'`` let us decide. The Gram
+		        matrix can also be passed as argument.
+		    max_iter : int, optional. Default=5000
+		        The maximum number of iterations
+		    tol : float, optional. Default=1E-4
+		        The tolerance for the optimization: if the updates are
+		        smaller than ``tol``, the optimization code checks the
+		        dual gap for optimality and continues until it is smaller
+		        than ``tol``.
+		    cv : int, cross-validation generator or an iterable, optional. Default=10
+		        Determines the cross-validation splitting strategy.
+		        Possible inputs for cv are:
 		        - integer, to specify the number of folds.
 		        - An object to be used as a cross-validation generator.
 		        - An iterable yielding train/test splits.
