@@ -51,22 +51,22 @@
 
 #Valid dictionary options for method_options and method_options_binary
 
-This section includes the options for the [Tree](#tree), [Boosted Tree](#boosted),[Random Forest](#random), [Ridge](#ridge), [Ridge Logit](#ridge logit), [Lasso](#lasso), and [Lasso Logit](#lasso logit)
+This section includes the options for the [Tree](#tree), [Boosted Tree](#boosted),[Random Forest](#random), [Ridge](#ridge), [RidgeLogit](#ridgelogit), [Lasso](#lasso), and [LassoLogit](#lassologit)
 
 Tree
 =======
-Boosted
+Boosted Tree
 =======
 Random Forest
 =======
-Ridge Logit
+RidgeLogit
 =======
 Ridge 
 =======
 Lasso
 =======
 Our Lasso is an implementation of sklearn's LassoCV class found [here](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV). The L-1 penalty parameter is chosen using k-fold cross validation. The valid method-options are as follows:
-Lasso Logit
+LassoLogit
 =======
 
 
