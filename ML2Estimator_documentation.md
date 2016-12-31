@@ -78,9 +78,10 @@ The Lasso option is an implementation of sklearn's LassoCV class found [here](ht
 - max_iter : int, optional. Default=5000. The maximum number of iterations
 
 - tol : float, optional. Default=1E-4. The tolerance for the optimization: if the updates are smaller than "tol", the optimization code checks the dual gap for optimality and continues until it is smaller than "tol".
-		    cv : int, cross-validation generator or an iterable, optional. Default=10
-		        Determines the cross-validation splitting strategy.
-		        Possible inputs for cv are:
+
+- cv : int, cross-validation generator or an iterable, optional. Default=10. 
+	Determines the cross-validation splitting strategy.
+	Possible inputs for cv are:
 		        - integer, to specify the number of folds.
 		        - An object to be used as a cross-validation generator.
 		        - An iterable yielding train/test splits.
