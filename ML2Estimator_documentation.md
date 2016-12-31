@@ -62,6 +62,34 @@
         second_order_terms: boolean, optional (default=False)
         	If set to true, then the machine learning method uses both all of the regressors included in X,
         	and their second order terms (each regressor squared and interactive effects).
+		verbose: boolean, optional (default=True).
+			If set to true, then the beta and standard error results will be printed 
+		standard_errors: string, optional (default="White")
+			Options:
+				-"Normal": results in normal standard errors
+				-"White": results in heteroskedasticity robust standard errors
+					as in White 1980
+				-"Mackinnon": results in alternative heteroskedasticity robust standard errors
+					as in Mackinnnon and White 1985
+
+- interactive_estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.interactive_se
+
+
+		X: mxn numpy array where m is the number of observations and n is the number of regressors.
+		y: numpy row vector of length m where y[i] corresponds to x[:,i]
+		d: numpyrow vector of length m where d[i] corresponds to x[:,i]
+		test_size : float, int (default=.5)
+        	If float, should be between 0.0 and 1.0 and represent the
+        	proportion of the dataset to include in the test split. If
+        	int, represents the absolute number of test samples. If None,
+        	the value is automatically set to the complement of the train size.
+        	If train size is also None, test size is set to 0.25.
+        normalize: boolean, optional (default=True).
+        	If set to true, each regressor is normalized to have a standard deviation of 1 across the sample.
+        	This is strongly recommended for both lasso and ridge methods
+        second_order_terms: boolean, optional (default=False)
+        	If set to true, then the machine learning method uses both all of the regressors included in X,
+        	and their second order terms (each regressor squared and interactive effects).
         drop_zero_divide: boolean, optional (default=False). 
         	If the actual value of d_out[i] is 1 but the predicted value of dhat[i] is 0 (or visa versa),
         	then the interactive estimate will necessarily have a divide by zero error.If drop_zero_divide
@@ -71,8 +99,6 @@
 		modify_zero_divide: float, optional (default=1E-3). modify_zero_divide is only used if drop_zero_divide
 			is False. Whenever there is d_out[i]=1 and dhat[i]=0, dhat[i] is set to the value of modify_zero_divide.
 			Similarly, whenever d_out[i]=0 and dhat[i]=1, then dhat[i] is set to the value of modify_zero_divide.
-
-- interactive_estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.Interactive_se
 
 #Available Machine Learning Methods
 
