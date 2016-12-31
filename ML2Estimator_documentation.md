@@ -65,6 +65,7 @@ Ridge
 =======
 Lasso
 =======
+[here](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV)
 Lasso Logit
 =======
 
