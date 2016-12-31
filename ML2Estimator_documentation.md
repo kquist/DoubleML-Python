@@ -63,13 +63,61 @@ Ridge Logit
 =======
 Ridge 
 =======
+The Ridge option uses an implementation of sklearn's [RidgeCV] class. The L-2 penalty parameter is chosen using cross validation. The available method_options dictionary entries are as follows:
+
+		    alphas : numpy array of shape [n_alphas], or int. Default=40.
+		        -If it is a numpy array, then it is the array of alpha values to try.
+		        	Regularization strength; must be a positive float. Regularization
+		        	improves the conditioning of the problem and reduces the variance of
+		        	the estimates. Larger values specify stronger regularization.
+		        	Alpha corresponds to ``C^-1`` in other linear models such as 
+		        	LogisticRegression or LinearSVC.
+		        -If alpha is an integer, then a loglinear numpy array of length alpha is created
+		        	with values ranging from 1E-3 to 1E5
+		    fit_intercept : boolean
+		        Whether to calculate the intercept for this model. If set
+		        to false, no intercept will be used in calculations
+		        (e.g. data is expected to be already centered).
+		    scoring : string, callable or None, optional, default: None
+		        A string (see model evaluation documentation) or
+		        a scorer callable object / function with signature
+		        ``scorer(estimator, X, y)``.
+		    cv : int, cross-validation generator or an iterable, optional
+		        Determines the cross-validation splitting strategy.
+		        Possible inputs for cv are:
+		        - None, to use the efficient Leave-One-Out cross-validation
+		        - integer, to specify the number of folds.
+		        - An object to be used as a cross-validation generator.
+		        - An iterable yielding train/test splits.
+		        For integer/None inputs, if ``y`` is binary or multiclass,
+		        :class:`sklearn.model_selection.StratifiedKFold` is used, else, 
+		        :class:`sklearn.model_selection.KFold` is used.
+		        Refer :ref:`User Guide <cross_validation>` for the various
+		        cross-validation strategies that can be used here.
+		    gcv_mode : {None, 'auto', 'svd', eigen'}, optional
+		        Flag indicating which strategy to use when performing
+		        Generalized Cross-Validation. Options are::
+		            'auto' : use svd if n_samples > n_features or when X is a sparse
+		                     matrix, otherwise use eigen
+		            'svd' : force computation via singular value decomposition of X
+		                    (does not work for sparse matrices)
+		            'eigen' : force computation via eigendecomposition of X^T X
+		        The 'auto' mode is the default and is intended to pick the cheaper
+		        option of the two depending upon the shape and format of the training
+		        data.
+		    store_cv_values : boolean, default=False
+		        Flag indicating if the cross-validation values corresponding to
+		        each alpha should be stored in the `cv_values_` attribute (see
+		        below). This flag is only compatible with `cv=None` (i.e. using
+		        Generalized Cross-Validation).
+
 Lasso
 =======
-The Lasso option is an implementation of sklearn's LassoCV class found [here](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV). The L-1 penalty parameter is chosen using k-fold cross validation. The valid method_option dictionary entries are as follows:
+The Lasso option uses an implementation of sklearn's [LassoCV](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV) class. The L-1 penalty parameter is chosen using cross validation. The available method_options dictionary entries are as follows:
 
 			eps : float, optional. Default=1E-3
 		        Length of the path. "eps=1e-3" means that
-		        ``alpha_min / alpha_max = 1e-3".
+		        "alpha_min / alpha_max = 1e-3".
 		    n_alphas : int, optional. Default=100
 		        Number of alphas along the regularization path
 		    alphas : numpy array, optional, Default=None
@@ -77,7 +125,7 @@ The Lasso option is an implementation of sklearn's LassoCV class found [here](ht
 		        If ``None`` alphas are set automatically
 		    precompute : True | False | 'auto' | array-like. Default='auto'
 		        Whether to use a precomputed Gram matrix to speed up
-		        calculations. If set to ``'auto'`` let us decide. The Gram
+		        calculations. If set to 'auto' let us decide. The Gram
 		        matrix can also be passed as argument.
 		    max_iter : int, optional. Default=5000
 		        The maximum number of iterations
