@@ -43,7 +43,13 @@
 
 - fit(self,X,Y,binary_outcome): This method fits a machine learning method using regressors X and the outcome variable Y. If binary_outcome is True, then self.method_class_binary will be the ml method used. If binary_outcome is False, then self.method_class will be used. X should be an mxn numpy array whwere m is the number of observations and n are the regressors. Y should be 1-d numpy array of length m
 		
-- find_residuals(self, y_use,y_out,x_use,x_out,binary_outcome): This method uses x_use and y_use to fit a model, and then uses that calculates yhat=E[y|x_out]. This method returns yhat and its residuals (y_out-yhat). The parameters x_use and x_out are lxn and mxn numpy arrays respectively, where l and m are the number of observations in the use (train) and out (test) sets, and n is the number of regressors. The parameters y_use and y_out are 1d numpy arrays of length l and m respectively. The parameter binary_outcome is a boolean which determines whether self.method or self.method_binary should be used as the machine learning method.
+- find_residuals(self, y_use,y_out,x_use,x_out,binary_outcome): This method uses x_use and y_use to fit a model (specified by binary_outcome), and then uses the fitted model to predict the values of y_out given x_out. This method returns the predicted values and the risiduals (y_out-predicted y_out). 
+
+		x_use: lxn numpy array where the are n regressors and l observations in the train set.
+		x_out: mxn numpy array where there are n regressors and m observations in the test set.
+		y_use: 1-d numpy array of length l where there are l observations in the train set.
+		y_out 1-d numpy array of length m where there are m observations in the train set.
+		bianry_outcome: boolean. If false, the machine learning method specified in self.method is used, if set to True, then the machine learning method specified in self.method_binary is used.
 
 - pl_estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method estimates the beta coefficient of the binary regressor d on the outcome variable y when other regressors X are correlated with both X and y. This method returns the class with the beta estimate stored in self.pL_beta and the estimate's standard error stored in self.pL_se. The parameters are as follows
 
