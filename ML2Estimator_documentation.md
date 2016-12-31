@@ -83,9 +83,9 @@ The Lasso option is an implementation of sklearn's LassoCV class found [here](ht
 		        The maximum number of iterations
 		    tol : float, optional. Default=1E-4
 		        The tolerance for the optimization: if the updates are
-		        smaller than ``tol``, the optimization code checks the
+		        smaller than "tol", the optimization code checks the
 		        dual gap for optimality and continues until it is smaller
-		        than ``tol``.
+		        than "tol".
 		    cv : int, cross-validation generator or an iterable, optional. Default=10
 		        Determines the cross-validation splitting strategy.
 		        Possible inputs for cv are:
@@ -98,7 +98,7 @@ The Lasso option is an implementation of sklearn's LassoCV class found [here](ht
 		    verbose : bool or integer. Default=False
 		        Amount of verbosity.
 		    n_jobs : integer, optional. Default=1
-		        Number of CPUs to use during the cross validation. If ``-1``, use
+		        Number of CPUs to use during the cross validation. If "-1", use
 		        all the CPUs.
 		    positive : bool, optional. Default=False
 		        If positive, restrict regression coefficients to be positive
@@ -115,17 +115,8 @@ The Lasso option is an implementation of sklearn's LassoCV class found [here](ht
 		        whether to calculate the intercept for this model. If set
 		        to false, no intercept will be used in calculations
 		        (e.g. data is expected to be already centered).
-		    normalize : boolean, optional, default True
-		        If ``True``, the regressors X will be normalized before regression.
-		        This parameter is ignored when ``fit_intercept`` is set to ``False``.
-		        When the regressors are normalized, note that this makes the
-		        hyperparameters learnt more robust and almost independent of the number
-		        of samples. The same property is not valid for standardized data.
-		        However, if you wish to standardize, please use
-		        :class:`preprocessing.StandardScaler` before calling ``fit`` on an estimator
-		        with ``normalize=False``.
 		    copy_X : boolean, optional, default True
-		        If ``True``, X will be copied; else, it may be overwritten.
+		        If "True", X will be copied; else, it may be overwritten.
 Lasso Logit
 =======
 
