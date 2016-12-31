@@ -41,34 +41,51 @@
 
 - define_model(self,binary_outcome): If binary_outcome is  false, this method will initialize and return a member of class type self.method with self.method_options If binary_outcome is False, this method will initialize and return a member of class type self.method_binary with self.method_options_binary
 
-- fit(self,X,Y,binary_outcome): This method fits a machine learning method using regressors X and the outcome variable Y. If binary_outcome is True, then self.method_class_binary will be the ml method used. If binary_outcome is False, then self.method_class will be used. X should be an mxn numpy array whwere m is the number of observations and n are the regressors. Y should be 1-d numpy array of length m
+- fit(self,X,Y,binary_outcome): This method fits a machine learning method using regressors X and the outcome variable Y. The parameters are as follows: 
 		
-- find_residuals(self, y_use,y_out,x_use,x_out,binary_outcome): This method uses x_use and y_use to fit a model (specified by binary_outcome), and then uses the fitted model to predict the values of y_out given x_out. This method returns the predicted values and the risiduals (y_out-predicted y_out). 
+		X:mxn numpy array whwere m is the number of observations and n are the regressors.
+		
+		Y:1-d numpy array of length m representing the outcome variable.
+		
+		Binary_outcome: boolean. If false, the machine learning method specified in self.method is used, if 
+			set to True, then the machine learning method specified in self.method_binary is used.
+		
+- find_residuals(self, y_use,y_out,x_use,x_out,binary_outcome): This method uses x_use and y_use to fit a model (specified by binary_outcome), and then uses the fitted model to predict the values of y_out given x_out. This method returns the predicted values and the risiduals (y_out-predicted y_out). The parameters are as follows:
 
 		x_use: lxn numpy array where the are n regressors and l observations in the train set.
+		
+		
 		x_out: mxn numpy array where there are n regressors and m observations in the test set.
+		
 		y_use: 1-d numpy array of length l where there are l observations in the train set.
+		
 		y_out 1-d numpy array of length m where there are m observations in the train set.
+		
 		bianry_outcome: boolean. If false, the machine learning method specified in self.method is used, if 
 			set to True, then the machine learning method specified in self.method_binary is used.
 
 - pl_estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method estimates the beta coefficient of the binary regressor d on the outcome variable y when other regressors X are correlated with both X and y. This method returns the class with the beta estimate stored in self.pL_beta and the estimate's standard error stored in self.pL_se. The parameters are as follows
 
 		X: mxn numpy array where m is the number of observations and n is the number of regressors.
+		
 		y: numpy row vector of length m where y[i] corresponds to x[:,i]
+		
 		d: numpyrow vector of length m where d[i] corresponds to x[:,i]
+		
 		test_size : float, int (default=.5)
-        	If float, should be between 0.0 and 1.0 and represent the
-        	proportion of the dataset to include in the test split. If
-        	int, represents the absolute number of test samples. If None,
-        	the value is automatically set to the complement of the train size.
-        	If train size is also None, test size is set to 0.25.
-        normalize: boolean, optional (default=True).
-        	If set to true, each regressor is normalized to have a standard deviation of 1 across the sample.
-        	This is strongly recommended for both lasso and ridge methods
-        second_order_terms: boolean, optional (default=False)
-        	If set to true, then the machine learning method uses both all of the regressors included in X,
-        	and their second order terms (each regressor squared and interactive effects).
+			If float, should be between 0.0 and 1.0 and represent the
+        		proportion of the dataset to include in the test split. If
+        		int, represents the absolute number of test samples. If None,
+        		the value is automatically set to the complement of the train size.
+        		If train size is also None, test size is set to 0.25.
+        	
+		normalize: boolean, optional (default=True).
+        		If set to true, each regressor is normalized to have a standard deviation of 1 across the sample.
+        		This is recommended for both lasso and ridge methods
+        	
+		second_order_terms: boolean, optional (default=False)
+        		If set to true, then the machine learning method uses both all of the regressors included in X,
+        		and their second order terms (each regressor squared and interactive effects).
 		verbose: boolean, optional (default=True).
 			If set to true, then the beta and standard error results will be printed 
 		standard_errors: string, optional (default="White")
@@ -83,29 +100,36 @@
 
 
 		X: mxn numpy array where m is the number of observations and n is the number of regressors.
+		
 		y: numpy row vector of length m where y[i] corresponds to x[:,i]
+		
 		d: numpyrow vector of length m where d[i] corresponds to x[:,i]
+		
 		test_size : float, int (default=.5)
-        	If float, should be between 0.0 and 1.0 and represent the
-        	proportion of the dataset to include in the test split. If
-        	int, represents the absolute number of test samples. If None,
-        	the value is automatically set to the complement of the train size.
-        	If train size is also None, test size is set to 0.25.
-        normalize: boolean, optional (default=True).
-        	If set to true, each regressor is normalized to have a standard deviation of 1 across the sample.
-        	This is strongly recommended for both lasso and ridge methods
-        second_order_terms: boolean, optional (default=False)
-        	If set to true, then the machine learning method uses both all of the regressors included in X,
-        	and their second order terms (each regressor squared and interactive effects).
-        drop_zero_divide: boolean, optional (default=False). 
-        	If the actual value of d_out[i] is 1 but the predicted value of dhat[i] is 0 (or visa versa),
-        	then the interactive estimate will necessarily have a divide by zero error.If drop_zero_divide
-        	is True, then all cases in which a divide by zero error would occur will be thrown out of the sample
-		verbose: boolean, optional (default=True).
-			If set to true, then the beta and standard error results will be printed 
+        		If float, should be between 0.0 and 1.0 and represent the
+        		proportion of the dataset to include in the test split. If
+        		int, represents the absolute number of test samples. If None,
+        		the value is automatically set to the complement of the train size.
+        		If train size is also None, test size is set to 0.25.
+        	
+		normalize: boolean, optional (default=True).
+        		If set to true, each regressor is normalized to have a standard deviation of 1 across the sample.
+        		This is strongly recommended for both lasso and ridge methods
+        
+		second_order_terms: boolean, optional (default=False)
+        		If set to true, then the machine learning method uses both all of the regressors included in X,
+        		and their second order terms (each regressor squared and interactive effects).
+        	
+		drop_zero_divide: boolean, optional (default=False). 
+        		If the actual value of d_out[i] is 1 but the predicted value of dhat[i] is 0 (or visa versa),
+        		then the interactive estimate will necessarily have a divide by zero error.If drop_zero_divide
+        		is True, then all cases in which a divide by zero error would occur will be thrown out of the sample
+			verbose: boolean, optional (default=True).
+				If set to true, then the beta and standard error results will be printed 
 		modify_zero_divide: float, optional (default=1E-3). modify_zero_divide is only used if drop_zero_divide
-			is False. Whenever there is d_out[i]=1 and dhat[i]=0, dhat[i] is set to the value of modify_zero_divide.
-			Similarly, whenever d_out[i]=0 and dhat[i]=1, then dhat[i] is set to the value of modify_zero_divide.
+			is False. Whenever there is d_out[i]=1 and dhat[i]=0, dhat[i] is set to the value 
+			of modify_zero_divide.Similarly, whenever d_out[i]=0 and dhat[i]=1, then dhat[i] is set to the
+			value of modify_zero_divide.
 
 #Available Machine Learning Methods
 
