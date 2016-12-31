@@ -1,6 +1,6 @@
 #Class: ML2_Estimator
 The DoubleML package is intended to be used to implement the estimation procedure developed in ["Double Machine 
-Learning for Treatment and Causal Parameters"](#https://arxiv.org/abs/1608.00060) by Victor Chernozhukov, Denis Chetverikov, Mert Demirer,
+Learning for Treatment and Causal Parameters"](https://arxiv.org/abs/1608.00060) by Victor Chernozhukov, Denis Chetverikov, Mert Demirer,
 Esther Duflo, Christian Hansen, and Whitney Newey
 #Parameters:
 
