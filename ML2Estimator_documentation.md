@@ -65,7 +65,7 @@ Ridge
 =======
 Lasso
 =======
-[here](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV)
+Our Lasso is an implementation of sklearn's LassoCV class found [here](http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html#sklearn.linear_model.LassoCV). The L-1 penalty parameter is chosen using k-fold cross validation. The valid method-options are as follows:
 Lasso Logit
 =======
 
