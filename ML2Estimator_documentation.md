@@ -49,7 +49,8 @@
 		x_out: mxn numpy array where there are n regressors and m observations in the test set.
 		y_use: 1-d numpy array of length l where there are l observations in the train set.
 		y_out 1-d numpy array of length m where there are m observations in the train set.
-		bianry_outcome: boolean. If false, the machine learning method specified in self.method is used, if set to True, then the machine learning method specified in self.method_binary is used.
+		bianry_outcome: boolean. If false, the machine learning method specified in self.method is used, if 
+			set to True, then the machine learning method specified in self.method_binary is used.
 
 - pl_estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method estimates the beta coefficient of the binary regressor d on the outcome variable y when other regressors X are correlated with both X and y. This method returns the class with the beta estimate stored in self.pL_beta and the estimate's standard error stored in self.pL_se. The parameters are as follows
 
