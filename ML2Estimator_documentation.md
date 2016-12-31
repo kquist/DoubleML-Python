@@ -45,9 +45,32 @@
 		
 - find_residuals(self, y_use,y_out,x_use,x_out,binary_outcome): This method uses x_use and y_use to fit a model, and then uses that calculates yhat=E[y|x_out]. This method returns yhat and its residuals (y_out-yhat). The parameters x_use and x_out are lxn and mxn numpy arrays respectively, where l and m are the number of observations in the use (train) and out (test) sets, and n is the number of regressors. The parameters y_use and y_out are 1d numpy arrays of length l and m respectively. The parameter binary_outcome is a boolean which determines whether self.method or self.method_binary should be used as the machine learning method.
 
-- pl_estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method estimates the beta coefficient of the binary regressor d on the outcome variable y when other regressors X are correlated with both X and y. This method returns the class with the beta estimate stored in self.pL_beta and the standard error stored in self.pL_se. The parameters are as follows
+- pl_estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method estimates the beta coefficient of the binary regressor d on the outcome variable y when other regressors X are correlated with both X and y. This method returns the class with the beta estimate stored in self.pL_beta and the estimate's standard error stored in self.pL_se. The parameters are as follows
 
-	The parameter X should be an mxn numpy array where there are m observations and n regressors besides the regressor of iterest. The parameter y is a 1-d numpy array of length m, and is the outcome  variable. The parameter d is a 1-d numpy array of length m, and represents the binary regressor of interest. 
+		X: mxn numpy array where m is the number of observations and n is the number of regressors.
+		y: numpy row vector of length m where y[i] corresponds to x[:,i]
+		d: numpyrow vector of length m where d[i] corresponds to x[:,i]
+		test_size : float, int (default=.5)
+        	If float, should be between 0.0 and 1.0 and represent the
+        	proportion of the dataset to include in the test split. If
+        	int, represents the absolute number of test samples. If None,
+        	the value is automatically set to the complement of the train size.
+        	If train size is also None, test size is set to 0.25.
+        normalize: boolean, optional (default=True).
+        	If set to true, each regressor is normalized to have a standard deviation of 1 across the sample.
+        	This is strongly recommended for both lasso and ridge methods
+        second_order_terms: boolean, optional (default=False)
+        	If set to true, then the machine learning method uses both all of the regressors included in X,
+        	and their second order terms (each regressor squared and interactive effects).
+        drop_zero_divide: boolean, optional (default=False). 
+        	If the actual value of d_out[i] is 1 but the predicted value of dhat[i] is 0 (or visa versa),
+        	then the interactive estimate will necessarily have a divide by zero error.If drop_zero_divide
+        	is True, then all cases in which a divide by zero error would occur will be thrown out of the sample
+		verbose: boolean, optional (default=True).
+			If set to true, then the beta and standard error results will be printed 
+		modify_zero_divide: float, optional (default=1E-3). modify_zero_divide is only used if drop_zero_divide
+			is False. Whenever there is d_out[i]=1 and dhat[i]=0, dhat[i] is set to the value of modify_zero_divide.
+			Similarly, whenever d_out[i]=0 and dhat[i]=1, then dhat[i] is set to the value of modify_zero_divide.
 
 - interactive_estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.Interactive_se
 
