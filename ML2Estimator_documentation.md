@@ -1,9 +1,9 @@
 #Class: ML2_Estimator
 Parameters:
 
-1.hi
+1. hi
 
-2.go
+2. go
 
 Attributes:
 Methods:
