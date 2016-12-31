@@ -51,7 +51,7 @@
 
 #Valid dictionary options for method_options and method_options_binary
 
-This section includes the options for the [Tree](#tree), [Boosted Tree](#boosted),[Random Forest](#random), [Ridge](#ridge), [RidgeLogit](#ridgelogit), [Lasso](#lasso), and [LassoLogit](#lassologit)
+This section includes the options for the [Tree](#tree), [Boosted Tree](#boosted),[Random Forest](#random forest), [Ridge](#ridge regression), [RidgeLogit](#ridgelogit), [Lasso](#lasso), and [LassoLogit](#lassologit)
 
 Tree
 =======
