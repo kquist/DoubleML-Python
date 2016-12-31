@@ -15,13 +15,13 @@
 
 - method_class_binary: The initialized instance of the class of mahcine learning method that self.method_binary corresponds to. For example, if 'self.method_binary'="Ridge Logit", then 'self.method_class_binary' will be an instance of a Random Forest estimator with the settings defined by 'method_options_binary'.
 
-- pl_beta: The effect of d on the outcome variable using the partial linear estimation strategy
+- pl_beta: The estimated effect of d on the outcome variable using the partial linear estimation strategy
 
-- pl_se: The standard error of the effect of d on the outcome variable using the partial linear estimation strategy:
+- pl_se: The standard error of the estimate of the effect of d on the outcome variable using the partial linear estimation strategy:
 
-- interactive_beta: The effect of d on the outcome variable using the partial linear estimation strategy
+- interactive_beta: The estimated effect of d on the outcome variable using the partial linear estimation strategy
 
-- interactive_se: The standard error of the effect of d on the outcome variable using the partial linear estimation strategy:
+- interactive_se: The standard error of the estimate of the effect of d on the outcome variable using the partial linear estimation strategy:
 
 #Methods:
 
@@ -50,3 +50,5 @@
 - interactive_estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.Interactive_se
 
 #Valid dictionary options for method_options and method_options_binary
+
+This section includes the options for the Tree
