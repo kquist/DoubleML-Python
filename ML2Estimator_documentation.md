@@ -1,7 +1,7 @@
 #Class: ML2_Estimator
 #Parameters:
 
-- method: str, optional (default="Tree")
+- method: str, optional (default="Tree"). This determines which machine learning estimation technique will be employed for estimates with a non-binary outcome variable. Options include : "Tree" (for regression tree), "Boosted Tree" (for ada boosted tree), "Random Forest", "Lasso", and "Ridge"
 
 - method_binary: str or none, optional (default=None)
 
@@ -45,6 +45,6 @@
 		
 - find_residuals(self, y_use,y_out,x_use,x_out,binary_outcome): This method uses x_use and y_use to fit a model, and then uses that calculates yhat=E[y|x_out]. This method returns yhat and its residuals (y_out-yhat)
 
-- pl_Estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.PL_beta and the standard error stored in self.PL_se
+- pl_estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.PL_beta and the standard error stored in self.PL_se
 
-- interactive_Estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.Interactive_se
+- interactive_estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.Interactive_se
