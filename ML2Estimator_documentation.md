@@ -28,21 +28,7 @@ Esther Duflo, Christian Hansen, and Whitney Newey
 
 #Methods:
 
-- define_lasso(self,binary_outcome): Initializes and returns an instance of the sklearn.linear_model.LassoCV class. If binary_outcome is True, then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
 
-- define_lasso_logit(self,binary_outcome): Initializes and returns  an instance of the LassoLogitCV class.If binary_outcome is True, then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
-
-- define_random_forest(self,binary_outcome): Initializes and returns an instance of the sklearn.ensemble.RandomForestRegressor class.If binary_outcome is True, then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
-
-- define_regression_tree(self,binary_outcome): Initializes and returns  an instance of sklearn.model_selection.GridSearchCV() class where tree.DecisionTreeRegressor is the model being searched over.If binary_outcome is True, then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
-
-- define_regression_tree_boosted(self,binary_outcome): Initializes and returns  an instance of the sklearn.ensemble.AdaBoostRegressor class.If binary_outcome is True,then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
-
-- define_ridge(self,binary_outcome): Initializes and returns  an instance of the sklearn.linear_model.RidgeCV class. If binary_outcome is True, then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
-
-- define_ridge_logit(self,binary_outcome): Initializes and returns an instance of the RidgeLogitCV class. If binary_outcome is True, then method_options_binary will be used. If binary_outcome is False, method_options will be used. 
-
-- define_model(self,binary_outcome): Initializes an instance of a  machine learning method and returns it. If binary_outcome is  false, this method will initialize and return a member of class type self.method with self.method_options If binary_outcome is False, this method will initialize and return a member of class type self.method_binary with self.method_options_binary
 
 - fit(self,X,Y,binary_outcome): This method fits a machine learning method using regressors X and the outcome variable Y. The parameters are as follows: 
 		
@@ -51,19 +37,6 @@ Esther Duflo, Christian Hansen, and Whitney Newey
 		Y:1-d numpy array of length m representing the outcome variable.
 		
 		Binary_outcome: boolean. If false, the machine learning method specified in self.method is used, if 
-			set to True, then the machine learning method specified in self.method_binary is used.
-		
-- find_residuals(self, y_use,y_out,x_use,x_out,binary_outcome): This method uses x_use and y_use to fit a model (specified by binary_outcome), and then uses the fitted model to predict the values of y_out given x_out. This method returns the predicted values and the risiduals (y_out-predicted y_out). The parameters are as follows:
-
-		x_use: lxn numpy array where the are n regressors and l observations in the train set.
-		
-		x_out: mxn numpy array where there are n regressors and m observations in the test set.
-		
-		y_use: 1-d numpy array of length l where there are l observations in the train set.
-		
-		y_out 1-d numpy array of length m where there are m observations in the train set.
-		
-		bianry_outcome: boolean. If false, the machine learning method specified in self.method is used, if 
 			set to True, then the machine learning method specified in self.method_binary is used.
 
 - pl_estimate(self,X,y,d,test_size, normalize,second_order_terms verbose, standard_errors):: This method is the implementation of the double machine learning partial linear estimation explained in Chernozhukov et. al. This method estimates the beta coefficient of the binary regressor d on the outcome variable y when other regressors X are correlated with both X and y. This method returns the class with the beta estimate stored in self.pL_beta and the estimate's standard error stored in self.pL_se. The parameters are as follows
