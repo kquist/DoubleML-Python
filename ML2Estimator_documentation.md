@@ -370,5 +370,21 @@ The Lasso option uses an implementation of sklearn's [LassoCV](http://scikit-lea
 		        If "True", X will be copied; else, it may be overwritten.
 Lasso Logit
 =======
-
+		    cv: integer, optional. The number of folds used in the leave-one-out cross validation (default=10)
+			Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine 
+				the potential L-1 penalty parameter values that the cross validation considers. If Cs takes the value of an
+				integer, then the Cs will be exponential between low_val and high_val(default=10)
+			solver: Determines which solver will be used to estimate the beta values for each given C. All of the solvers
+				are methods in scipy.optimize.minimize. For the solvers 'BFGS', "Newton-CG", and 'CG', an
+				analytical derivative is automatically used (default='BFGS')
+				Potential solver values include:
+					-"BFGS"
+					-"Newton-CG"
+					-"CG"
+					-"Nelder-Mead"
+					-"Powell"
+			solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver method.
+				View the options for scipy.optimize.minimize method options to view what the method-specific options are.
+			low_val: float, optional. The lowest L-1 penalty parameter value considered in cross-validation. (default=1E-4)
+			high_val: float, optional. The  highest L-1 penalty parameter value considered in cross-validation. (default=1E4)
 
