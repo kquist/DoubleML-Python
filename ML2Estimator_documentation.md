@@ -66,14 +66,10 @@ Ridge
 The Ridge option uses an implementation of sklearn's [RidgeCV] class. The L-2 penalty parameter is chosen using cross validation. The available method_options dictionary entries are as follows:
 
 		    alphas : numpy array of shape [n_alphas], or int. Default=40.
-		        -If it is a numpy array, then it is the array of alpha values to try.
-		        	Regularization strength; must be a positive float. Regularization
-		        	improves the conditioning of the problem and reduces the variance of
-		        	the estimates. Larger values specify stronger regularization.
-		        	Alpha corresponds to ``C^-1`` in other linear models such as 
-		        	LogisticRegression or LinearSVC.
-		        -If alpha is an integer, then a loglinear numpy array of length alpha is created
-		        	with values ranging from 1E-3 to 1E5
+		        -If alpha is a numpy array, then it is used as an array of L-2 penalties that are
+				tested using cross validationis the array of alpha values to try.
+		        -If alpha is an integer, then the computer generates L-2 penalty parameters using
+				a loglinear numpy array of length alpha with values ranging from 1E-3 to 1E5
 		    fit_intercept : boolean
 		        Whether to calculate the intercept for this model. If set
 		        to false, no intercept will be used in calculations
