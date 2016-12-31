@@ -49,4 +49,4 @@
 
 - interactive_estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.Interactive_se
 
-#Valid 'method_options' values
+#Valid dictionary options for method_options and method_options_binary
