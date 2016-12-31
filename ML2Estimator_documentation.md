@@ -5,9 +5,9 @@
 
 - method_binary: str or none, optional (default=None). This determines which machine learning estimation technique will be employed for estimates with a non-binary outcome variable. Options include : "Tree" (for regression tree), "Boosted Tree" (for ada boosted tree), "Random Forest", "Lasso", "Ridge", "Lasso Logit" (for a logistic regression with an L-1 penalty parameter), and "Ridge Logit" (for a logistic regression with an L-2 penalty parameter). If method is set to "Tree", "Boosted Tree", or "Random Forest", then method_binary will default to the same value as method. However, if method is set to "Logit" or "Ridge", then method_binary will default to "Lasso Logit" or "Ridge" respectively.
 
-- method_options: dict or none, optional (default=None). These are the options specific to the machine learning method defined in the 'method' parameter
+- method_options: dict or none, optional (default=None). These are the options specific to the machine learning method defined in the 'method' parameter. For more information about available method_options see [here](#available-machine-learning-methods).
 
-- method_optiions_binary: These are the options specific to the machine learning method defined in the 'method' parameter
+- method_optiions_binary: These are the options specific to the machine learning method defined in the 'method_binary' parameter see [here](#available-machine-learning-methods).
 
 #Attributes:
 
@@ -49,7 +49,7 @@
 
 - interactive_estimate(self,X,y,d,test_size,normalize, second_order_terms, drop_zero_divide, modify_zero_divide,verbose): This method is the implementation of the double machine learning interactive estimation explained in Chernozhukov et. al. This method returns the class with the beta estimate stored in self.Interactive_beta and the standard errorstored in self.Interactive_se
 
-#Valid dictionary options for method_options and method_options_binary
+#Available Machine Learning Methods
 
 This section includes the options for the [Tree](#tree), [Boosted Tree](#boosted-tree),[Random Forest](#random-forest), [Ridge](#ridge regression), [RidgeLogit](#ridge-logit), [Lasso](#lasso), and [Lasso Logit](#lasso-logit)
 
