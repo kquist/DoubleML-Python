@@ -85,8 +85,10 @@
 		second_order_terms: boolean, optional (default=False)
         		If set to true, then the machine learning method uses both all of the regressors included in X,
         		and their second order terms (each regressor squared and interactive effects).
+		
 		verbose: boolean, optional (default=True).
 			If set to true, then the beta and standard error results will be printed 
+		
 		standard_errors: string, optional (default="White")
 			Options:
 				-"Normal": results in normal standard errors
@@ -123,8 +125,10 @@
         		If the actual value of d_out[i] is 1 but the predicted value of dhat[i] is 0 (or visa versa),
         		then the interactive estimate will necessarily have a divide by zero error.If drop_zero_divide
         		is True, then all cases in which a divide by zero error would occur will be thrown out of the sample
-			verbose: boolean, optional (default=True).
-				If set to true, then the beta and standard error results will be printed 
+		
+		verbose: boolean, optional (default=True).
+			If set to true, then the beta and standard error results will be printed 
+		
 		modify_zero_divide: float, optional (default=1E-3). modify_zero_divide is only used if drop_zero_divide
 			is False. Whenever there is d_out[i]=1 and dhat[i]=0, dhat[i] is set to the value 
 			of modify_zero_divide.Similarly, whenever d_out[i]=0 and dhat[i]=1, then dhat[i] is set to the
