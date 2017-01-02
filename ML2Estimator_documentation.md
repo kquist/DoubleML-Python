@@ -116,7 +116,7 @@ This section includes the options for the [Tree](#tree), [Boosted Tree](#boosted
 
 Tree
 =======
-The "Tree" option uses an implementation of sklearn's [DecisionTreeRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor) class. The maximum depth of the tree is selected using sklearn's [GridSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). The available method_options dictionary entries are as follows:
+The "Tree" option uses sklearn's [DecisionTreeRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html#sklearn.tree.DecisionTreeRegressor) class as an implementation of a [Decision Tree Regressor](http://scikit-learn.org/stable/modules/tree.html#tree). The maximum depth of the tree is selected using sklearn's [GridSearchCV](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). The available method_options dictionary entries are as follows:
 
 		criterion : string, optional (default="mse")
 			The function to measure the quality of a split. Supported criteria
