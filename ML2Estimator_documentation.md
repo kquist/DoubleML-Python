@@ -202,7 +202,7 @@ The "Tree" option uses an implementation of sklearn's [DecisionTreeRegressor](ht
 				
 Boosted Tree
 =======
-The Boosted Tree option uses an AdaBoost regression with an implementation of sklearn's [AdaBoostRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn.ensemble.AdaBoostRegressor). The available method_options dictionary entries are as follows: 
+The Boosted Tree option uses sklearn's [AdaBoostRegressor](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html#sklearn.ensemble.AdaBoostRegressor) as an implementation of the boosting algorithm AdaBoost(http://scikit-learn.org/stable/modules/ensemble.html#adaboost). The available method_options dictionary entries are as follows: 
 
 		base_estimator : object, optional (default=DecisionTreeRegressor)
 		        The base estimator from which the boosted ensemble is built.
