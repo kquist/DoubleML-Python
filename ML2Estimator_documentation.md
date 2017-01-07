@@ -335,8 +335,9 @@ The Ridge Logit option implements the [RidgeLogitCV](RidgeLogitCV_documentation.
 				-"Nelder-Mead"
 				-"Powell"
 		
-		solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the
-			solver method. To view the options specific to the selected solver, look at the 'options' section [here](https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html)
+		- solver_options: dict, optional. Options for the scipy.optimize.minimize method chosen in the solver method.
+			If solver='SLSQP' then solver_options will default to {"maxiter": 1000, "ftol":1E-5}. If the solver is
+			"Nelder-Mead" or "Powell" then solver_options will default to None. Click [here](https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html) to view what the method-specific options are.
 		
 		low_val: float, optional. The lowest penalty parameter value considered in cross-validation. (default=1E-3)
 		
@@ -481,8 +482,9 @@ The Lasso Logit option implements the [LassoLogitCV](LassoLogitCV_documentation.
 					-"Nelder-Mead"
 					-"Powell"
 		
-		solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in
-				the solver method.To view the options specific to the selected solver, look [here](https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html)
+		- solver_options: dict, optional. Options for the scipy.optimize.minimize method chosen in the solver method.
+			If solver='SLSQP' then solver_options will default to {"maxiter": 1000, "ftol":1E-5}. If the solver is
+			"Nelder-Mead" or "Powell" then solver_options will default to None. Click [here](https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html) to view what the method-specific options are.
 		
 		low_val: float, optional. The lowest L-1 penalty parameter value considered in cross-validation. (default=1E-4)
 		
