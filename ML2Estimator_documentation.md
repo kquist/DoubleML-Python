@@ -316,7 +316,7 @@ The Random Forest option uses an implementation of sklearn's [RandomForestRegres
 		        new forest.
 Ridge Logit
 =======
-The Ridge Logit option implements the RidgeLogitCV class that is a part of the doubleML package. The L-2 penalty parameter is chosen using cross validation. The available method_options dictionary entries are as follows:
+The Ridge Logit option implements the [RidgeLogitCV](RidgeLogitCV_documentation.md? "RidgeLogitCV Documentation") class that is a part of the doubleML package. The L-2 penalty parameter is chosen using k-fold leave-one-out cross validation. The available method_options dictionary entries are as follows:
 
 		cv: integer, optional. The number of folds used in the leave-one-out cross validation (default=10)
 		
@@ -463,7 +463,8 @@ The Lasso option uses an implementation of sklearn's [LassoCV](http://scikit-lea
 		        If "True", X will be copied; else, it may be overwritten.
 Lasso Logit
 =======
-		
+The Ridge Logit option implements the [LassoLogitCV](LassoLogitCV_documentation.md? "RidgeLogitCV Documentation") class that is a part of the doubleML package. The L-2 penalty parameter is chosen using k-fold leave-one-out cross validation. The available method_options dictionary entries are as follows:
+	
 		cv: integer, optional. The number of folds used in the leave-one-out cross validation (default=10)
 		
 		Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine 
