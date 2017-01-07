@@ -17,6 +17,7 @@ Thus if we set the parameter C to be the inverse of the L-2 penalty parameter, t
 - Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine the potential L-2 penalty parameter values that the cross validation considers. If Cs takes the value of an integer, then the Cs will be exponential between low_val and high_val(default=10)
 		
 - solver: Determines which solver will be used to estimate the beta values for each given C. All of the solvers are methods in scipy.optimize.minimize. For the solver 'SLSQP' analytical derivative is automatically used. (default='SlSQP')
+	
 		Potential solver values include:
 		-"SLSQP"
 		-"Nelder-Mead"
@@ -36,7 +37,12 @@ Thus if we set the parameter C to be the inverse of the L-2 penalty parameter, t
 
 - fit(self,X,Y): employs k-fold cross validation to determine which L-2 penalty parameter should be used using a maximum likelihood loss function, and then estimates the coefficients of a logistic regression on the whole set when using the calculated L-2 penalty parameter. The results are stored in self.coefficients
 				
-X:mxn array
+		"fit" parameters
+		X: mxn array where there are m observations in the sample and n regressors.
+		Y: 1-d array of length m where there are m observations, represents the outcome.
 	
 - predict(self,X): once the LassoLogitCV class has been fitted, the predict function uses these coefficients to predict the probability of each X having an outcome variable of 1
+		
+		"predict" parameters
+		X: mxn array where there are m observations in the sample and n regressors.
 
