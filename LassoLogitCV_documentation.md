@@ -23,7 +23,7 @@ Thus if we set the parameter C to be the inverse of the L-2 penalty parameter, t
 		-"Nelder-Mead"
 		-"Powell"
 
-- solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver method. View the options for scipy.optimize.minimize method options to view what the method-specific options are.
+- solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver method. Click [here](https://docs.scipy.org/doc/scipy-0.18.1/reference/generated/scipy.optimize.minimize.html) to view what the method-specific options are.
 	
 - low_val: float, optional (default=1E3). The lowest L-1 penalty parameter value considered in cross-validation.
 	
