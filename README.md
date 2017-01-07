@@ -15,14 +15,4 @@ The [LassoLogitCV](LassoLogitCV_documentation.md? "LassoLogitCV Documentation") 
 
 The [RidgeLogitCV](RidgeLogitCV_documentation.md? "RidgeLogitCV Documentation") class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
 
-#Table of Contents
-[Install](#install)
-
-[API](#api)
-
-[API](#api)
-
-Install
-=======
-API
-=======
+Installation instructions:
