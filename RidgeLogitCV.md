@@ -37,5 +37,15 @@ Thus if we set the parameter C to be the inverse of the L-2 penalty parameter, t
 		initial guess of the first minimization problem that estimates beta for a given X, Y, and C. If warm_start is
 		set to true, then all later estimations use the previous beta estimates as an initial guess. If warm_start is
 		False, then the initial guess of all minimization problems will be calculated using OLS
-
+#Attributes
+	coefficients: numpy array of the model's estimated coefficients. coefficients[-1] is the intercept and coefficients[i]
+		corresponds to the ith regresssor in the model
+#Methods:
+	fit(self,X,Y): employs k-fold cross validation to determine which L-2 penalty parameter should be used using a maximum
+		likelihood loss function, and then estimates the coefficients of a logistic regression on the whole set when
+		using the calculated L-2 penalty parameter. The results are stored in self.coefficients
+				
+				X:mxn array
+	predict(self,X): once the LassoLogitCV class has been fitted, the predict function uses these coefficients to predict the probability of each X
+		having an outcome variable of 1
 
