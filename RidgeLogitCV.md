@@ -11,41 +11,32 @@ Thus if we set the parameter C to be the inverse of the L-2 penalty parameter, t
 
 ![Alt text](RidgeLogitMinimize.png?raw=true "RidgeLogit Minimization")
 #Parameters:
-	cv: integer, optional. The number of folds used in the leave-one-out cross validation (default=10)
-	
-	Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine
-		the potential L-2 penalty parameter values that the cross validation considers. If Cs takes the value of an
-		integer, then the Cs will be exponential between low_val and high_val(default=10)
-		
-	solver: Determines which solver will be used to estimate the beta values for each given C. All of the solvers are
-			methods in scipy.optimize.minimize. For the solver 'SLSQP' analytical derivative is automatically used 
-			(default='SlSQP')
-			Potential solver values include:
-				-"SLSQP"
-				-"Nelder-Mead"
-				-"Powell"
 
-	solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver
-		method. View the options for scipy.optimize.minimize method options to view what the 
-		method-specific options are.
+- cv: integer, optional. The number of folds used in the leave-one-out cross validation (default=10)
 	
-	low_val: float, optional (default=1E3). The lowest L-2 penalty parameter value considered in cross-validation.
+- Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine the potential L-2 penalty parameter values that the cross validation considers. If Cs takes the value of an integer, then the Cs will be exponential between low_val and high_val(default=10)
+		
+- solver: Determines which solver will be used to estimate the beta values for each given C. All of the solvers are methods in scipy.optimize.minimize. For the solver 'SLSQP' analytical derivative is automatically used. (default='SlSQP')
+	Potential solver values include:
+	-"SLSQP"
+	-"Nelder-Mead"
+	-"Powell"
+
+- solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver method. View the options for scipy.optimize.minimize method options to view what the method-specific options are.
 	
-	high_val: float, optional (default=1E3). The  highest L-2 penalty parameter value considered in cross-validation.
+- low_val: float, optional (default=1E3). The lowest L-2 penalty parameter value considered in cross-validation.
 	
-	warm_start: boolean, optional (default=True). Whether or not warm_start is true, an OLS regression is used to set the
-		initial guess of the first minimization problem that estimates beta for a given X, Y, and C. If warm_start is
-		set to true, then all later estimations use the previous beta estimates as an initial guess. If warm_start is
-		False, then the initial guess of all minimization problems will be calculated using OLS
+- high_val: float, optional (default=1E3). The  highest L-2 penalty parameter value considered in cross-validation.
+	
+- warm_start: boolean, optional (default=True). Whether or not warm_start is true, an OLS regression is used to set the initial guess of the first minimization problem that estimates beta for a given X, Y, and C. If warm_start is set to true, then all later estimations use the previous beta estimates as an initial guess. If warm_start is False, then the initial guess of all minimization problems will be calculated using OLS
 #Attributes
-	coefficients: numpy array of the model's estimated coefficients. coefficients[-1] is the intercept and coefficients[i]
-		corresponds to the ith regresssor in the model
+
+- coefficients: numpy array of the model's estimated coefficients. coefficients[-1] is the intercept and coefficients[i] corresponds to the ith regresssor in the model
 #Methods:
-	fit(self,X,Y): employs k-fold cross validation to determine which L-2 penalty parameter should be used using a maximum
-		likelihood loss function, and then estimates the coefficients of a logistic regression on the whole set when
-		using the calculated L-2 penalty parameter. The results are stored in self.coefficients
+
+- fit(self,X,Y): employs k-fold cross validation to determine which L-2 penalty parameter should be used using a maximum likelihood loss function, and then estimates the coefficients of a logistic regression on the whole set when using the calculated L-2 penalty parameter. The results are stored in self.coefficients
 				
-				X:mxn array
-	predict(self,X): once the LassoLogitCV class has been fitted, the predict function uses these coefficients to predict the probability of each X
-		having an outcome variable of 1
+X:mxn array
+	
+- predict(self,X): once the LassoLogitCV class has been fitted, the predict function uses these coefficients to predict the probability of each X having an outcome variable of 1
 
