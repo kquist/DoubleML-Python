@@ -33,16 +33,15 @@ Thus if we set the parameter C to be the inverse of the L-2 penalty parameter, t
 #Attributes
 
 - coefficients: numpy array of the model's estimated coefficients. coefficients[-1] is the intercept and coefficients[i] corresponds to the ith regresssor in the model
+
 #Methods:
 
 - fit(self,X,Y): employs k-fold cross validation to determine which L-2 penalty parameter should be used using a maximum likelihood loss function, and then estimates the coefficients of a logistic regression on the whole set when using the calculated L-2 penalty parameter. The results are stored in self.coefficients
 				
-		"fit" parameters
 		X: mxn array where there are m observations in the sample and n regressors.
 		Y: 1-d array of length m where there are m observations, represents the outcome.
 	
 - predict(self,X): once the LassoLogitCV class has been fitted, the predict function uses these coefficients to predict the probability of each X having an outcome variable of 1
 		
-		"predict" parameters
 		X: mxn array where there are m observations in the sample and n regressors.
 
