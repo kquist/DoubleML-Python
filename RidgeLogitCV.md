@@ -17,10 +17,10 @@ Thus if we set the parameter C to be the inverse of the L-2 penalty parameter, t
 - Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine the potential L-2 penalty parameter values that the cross validation considers. If Cs takes the value of an integer, then the Cs will be exponential between low_val and high_val(default=10)
 		
 - solver: Determines which solver will be used to estimate the beta values for each given C. All of the solvers are methods in scipy.optimize.minimize. For the solver 'SLSQP' analytical derivative is automatically used. (default='SlSQP')
-	Potential solver values include:
-	-"SLSQP"
-	-"Nelder-Mead"
-	-"Powell"
+		Potential solver values include:
+		-"SLSQP"
+		-"Nelder-Mead"
+		-"Powell"
 
 - solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver method. View the options for scipy.optimize.minimize method options to view what the method-specific options are.
 	
