@@ -329,9 +329,7 @@ The Ridge Logit option implements the [RidgeLogitCV](RidgeLogitCV_documentation.
 			are methods in scipy.optimize.minimize. For the solvers 'BFGS', "Newton-CG", and 'CG', an
 			analytical derivative is automatically used (default='BFGS')
 			Potential solver values include:
-				-"BFGS"
-				-"Newton-CG"
-				-"CG"
+				-"SLSQP"
 				-"Nelder-Mead"
 				-"Powell"
 		
@@ -477,9 +475,7 @@ The Lasso Logit option implements the [LassoLogitCV](LassoLogitCV_documentation.
 				are methods in scipy.optimize.minimize. For the solvers 'BFGS', "Newton-CG", and 'CG', an
 				analytical derivative is automatically used (default='BFGS')
 				Potential solver values include:
-					-"BFGS"
-					-"Newton-CG"
-					-"CG"
+					-"SLSQP"
 					-"Nelder-Mead"
 					-"Powell"
 		
