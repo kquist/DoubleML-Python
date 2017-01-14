@@ -7,7 +7,7 @@ setup(
   author = 'Kramer Quist',
   author_email = 'kramer.quist@gmail.com',
   url = 'https://github.com/kquist/DoubleML/',
-  download_url = 'https://github.com/peterldowns/mypackage/tarball/0.1', # I'll explain this in a second
+  download_url = 'https://github.com/peterldowns/mypackage/tarball/0.1', 
   keywords = ['Double machine learning', 'Neyman machine learning', 'orthogonalization', 'cross-fit machine learning', 'de-biased machine learning']
   classifiers = [],
 )
