@@ -475,81 +475,104 @@ class ML2Estimator:
 	method_options: dict, or none, optional
 		Options for the ml estimation technique for continuous outcome variable.
 		Default values depend on machine learning method.
-		tree_options= 
-			
-		----Tree Method options---
+		
+		---Boosted Tree Method Options---
 
-			criterion : string, optional (default="mse")
-				The function to measure the quality of a split. Supported criteria
-				are "mse" for the mean squared error, which is equal to variance
-				reduction as feature selection criterion, and "mae" for the mean
-				 absolute error.
-			splitter : string, optional (default="best")
-				The strategy used to choose the split at each node. Supported
-				strategies are "best" to choose the best split and "random" to choose
-				the best random split.
-			max_features : int, float, string or None, optional (default=None)
-				the number of features to consider when looking for the best split:
-				- If int, then consider `max_features` features at each split.
-				- If float, then `max_features` is a percentage and
-					`int(max_features * n_features)` features are considered at each split.
-				- If "auto", then `max_features=n_features`.
-				- If "sqrt", then `max_features=sqrt(n_features)`.
-				- If "log2", then `max_features=log2(n_features)`.
-				- If None, then `max_features=n_features`.
-					Note: the search for a split does not stop until at least one
-					valid partition of the node samples is found, even if it requires to
-					effectively inspect more than ``max_features`` features.
-			min_samples_split : int, float, optional (default=2)
-				The minimum number of samples required to split an internal node:
-				- If int, then consider `min_samples_split` as the minimum number.
-				- If float, then `min_samples_split` is a percentage and
-					`ceil(min_samples_split * n_samples)` are the minimum
-					number of samples for each split.
-					Added float values for percentages.
-			min_samples_leaf : int, float, optional (default=1)
-				The minimum number of samples required to be at a leaf node:
-				- If int, then consider `min_samples_leaf` as the minimum number.
-				- If float, then `min_samples_leaf` is a percentage and
-					`ceil(min_samples_leaf * n_samples)` are the minimum
-					number of samples for each node.
-					Added float values for percentages.
-			min_weight_fraction_leaf : float, optional (default=0.)
-				The minimum weighted fraction of the sum total of weights (of all
-				the input samples) required to be at a leaf node. Samples have
-				equal weight when sample_weight is not provided.
-			max_leaf_nodes : int or None, optional (default=None)
-				Grow a tree with ``max_leaf_nodes`` in best-first fashion.
-				Best nodes are defined as relative reduction in impurity.
-				If None then unlimited number of leaf nodes.
-			random_state : int, RandomState instance or None, optional (default=None)
-				If int, random_state is the seed used by the random number generator;
-				If RandomState instance, random_state is the random number generator;
-				If None, the random number generator is the RandomState instance used
-				by `np.random`.
-			min_impurity_split : float, optional (default=1e-7)
-				Threshold for early stopping in tree growth. If the impurity
-				of a node is below the threshold, the node is a leaf.
-				.. versionadded:: 0.18
-			presort : bool, optional (default=False)
-				Whether to presort the data to speed up the finding of best splits in
-				fitting. For the default settings of a decision tree on large
-				datasets, setting this to true may slow down the training process.
-				When using either a smaller dataset or a restricted depth, this may
-				speed up the training.
-			n_jobs : int, default=1
-				Number of jobs to run in parallel.
-			cv : int, cross-validation generator or an iterable, optional (default=10)
-				Determines the cross-validation splitting strategy.
-				Possible inputs for cv are:
-					- integer, to specify the number of folds in a `(Stratified)KFold`,
-					- An object to be used as a cross-validation generator.
-					- An iterable yielding train, test splits.
-			search_range_low: int, optional. Default=1.
-			search_range_high: int, optional. Default=10.
-				This method uses a cross-validated grid search to estimate the optimal max_depth
-				that is inclusively between search_range_low and search_range_high
+			base_estimator : object, optional (default=DecisionTreeRegressor)
+		        The base estimator from which the boosted ensemble is built.
+		        Support for sample weighting is required. For options supported base estimators,
+		        see sklearn's documentation of AdaBoostRegressor
+		    n_estimators : integer, optional (default=100)
+		        The maximum number of estimators at which boosting is terminated.
+		        In case of perfect fit, the learning procedure is stopped early.
+		    learning_rate : float, optional (default=0.001)
+		        Learning rate shrinks the contribution of each regressor by
+		        ``learning_rate``. There is a trade-off between ``learning_rate`` and
+		        ``n_estimators``.
+		    loss : {'linear', 'square', 'exponential'}, optional (default='exponential')
+		        The loss function to use when updating the weights after each
+		        boosting iteration.
+		    random_state : int, RandomState instance or None, optional (default=None)
+		        If int, random_state is the seed used by the random number generator;
+		        If RandomState instance, random_state is the random number generator;
+		        If None, the random number generator is the RandomState instance used
+		        by `np.random`	    
 
+
+
+		---Lasso Method Options---
+
+			eps : float, optional. Default=1E-3
+		        Length of the path. ``eps=1e-3`` means that
+		        ``alpha_min / alpha_max = 1e-3``.
+		    n_alphas : int, optional. Default=100
+		        Number of alphas along the regularization path
+		    alphas : numpy array, optional, Default=None
+		        List of alphas where to compute the models. 
+		        If ``None`` alphas are set automatically
+		    precompute : True | False | 'auto' | array-like. Default='auto'
+		        Whether to use a precomputed Gram matrix to speed up
+		        calculations. If set to ``'auto'`` let us decide. The Gram
+		        matrix can also be passed as argument.
+		    max_iter : int, optional. Default=5000
+		        The maximum number of iterations
+		    tol : float, optional. Default=1E-4
+		        The tolerance for the optimization: if the updates are
+		        smaller than ``tol``, the optimization code checks the
+		        dual gap for optimality and continues until it is smaller
+		        than ``tol``.
+		    cv : int, cross-validation generator or an iterable, optional. Default=10
+		        Determines the cross-validation splitting strategy.
+		        Possible inputs for cv are:
+		        - integer, to specify the number of folds.
+		        - An object to be used as a cross-validation generator.
+		        - An iterable yielding train/test splits.
+		        For integer/None inputs, :class:`KFold` is used.
+		        Refer :ref:`User Guide <cross_validation>` for the various
+		        cross-validation strategies that can be used here.
+		    verbose : bool or integer. Default=False
+		        Amount of verbosity.
+		    n_jobs : integer, optional. Default=1
+		        Number of CPUs to use during the cross validation. If ``-1``, use
+		        all the CPUs.
+		    positive : bool, optional. Default=False
+		        If positive, restrict regression coefficients to be positive
+		    selection : str, default 'cyclic'
+		        If set to 'random', a random coefficient is updated every iteration
+		        rather than looping over features sequentially by default. This
+		        (setting to 'random') often leads to significantly faster convergence
+		        especially when tol is higher than 1e-4.
+		    random_state : int, RandomState instance, or None (default)
+		        The seed of the pseudo random number generator that selects
+		        a random feature to update. Useful only when selection is set to
+		        'random'.
+		    fit_intercept : boolean, default True
+		        whether to calculate the intercept for this model. If set
+		        to false, no intercept will be used in calculations
+		        (e.g. data is expected to be already centered).
+		    copy_X : boolean, optional, default True
+		        If ``True``, X will be copied; else, it may be overwritten.
+		
+
+
+		---Lasso Logit Options---  
+		    cv: integer, optional. The number of folds used in the leave-one-out cross validation (default=10)
+			Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine 
+				the potential L-1 penalty parameter values that the cross validation considers. If Cs takes the value of an
+				integer, then the Cs will be exponential between low_val and high_val(default=10)
+			solver: Determines which solver will be used to estimate the beta values for each given C. All of the solvers
+				are methods in scipy.optimize.minimize. For the solvers 'BFGS', "Newton-CG", and 'CG', an
+				analytical derivative is automatically used (default='BFGS')
+				Potential solver values include:
+					-"BFGS"
+					-"Newton-CG"
+					-"CG"
+					-"Nelder-Mead"
+					-"Powell"
+			solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver method.
+				View the options for scipy.optimize.minimize method options to view what the method-specific options are.
+			low_val: float, optional. The lowest L-1 penalty parameter value considered in cross-validation. (default=1E-4)
+			high_val: float, optional. The  highest L-1 penalty parameter value considered in cross-validation. (default=1E4)
 
 
 		----Random Forest Method options---
@@ -628,27 +651,7 @@ class ML2Estimator:
 
 
 
-		---Boosted Tree Method Options---
 
-			base_estimator : object, optional (default=DecisionTreeRegressor)
-		        The base estimator from which the boosted ensemble is built.
-		        Support for sample weighting is required. For options supported base estimators,
-		        see sklearn's documentation of AdaBoostRegressor
-		    n_estimators : integer, optional (default=100)
-		        The maximum number of estimators at which boosting is terminated.
-		        In case of perfect fit, the learning procedure is stopped early.
-		    learning_rate : float, optional (default=0.001)
-		        Learning rate shrinks the contribution of each regressor by
-		        ``learning_rate``. There is a trade-off between ``learning_rate`` and
-		        ``n_estimators``.
-		    loss : {'linear', 'square', 'exponential'}, optional (default='exponential')
-		        The loss function to use when updating the weights after each
-		        boosting iteration.
-		    random_state : int, RandomState instance or None, optional (default=None)
-		        If int, random_state is the seed used by the random number generator;
-		        If RandomState instance, random_state is the random number generator;
-		        If None, the random number generator is the RandomState instance used
-		        by `np.random`	        
 
 		---Ridge Method Options---
 
@@ -660,7 +663,7 @@ class ML2Estimator:
 		        	Alpha corresponds to ``C^-1`` in other linear models such as 
 		        	LogisticRegression or LinearSVC.
 		        -If alpha is an integer, then a loglinear numpy array of length alpha is created
-		        	with values ranging from 1E-3 to 1E5
+		        	with values ranging from 1E-3 to 1E3
 		    fit_intercept : boolean
 		        Whether to calculate the intercept for this model. If set
 		        to false, no intercept will be used in calculations
@@ -698,58 +701,7 @@ class ML2Estimator:
 		        below). This flag is only compatible with `cv=None` (i.e. using
 		        Generalized Cross-Validation).
 
-		---Lasso Method Options---
 
-			eps : float, optional. Default=1E-3
-		        Length of the path. ``eps=1e-3`` means that
-		        ``alpha_min / alpha_max = 1e-3``.
-		    n_alphas : int, optional. Default=100
-		        Number of alphas along the regularization path
-		    alphas : numpy array, optional, Default=None
-		        List of alphas where to compute the models. 
-		        If ``None`` alphas are set automatically
-		    precompute : True | False | 'auto' | array-like. Default='auto'
-		        Whether to use a precomputed Gram matrix to speed up
-		        calculations. If set to ``'auto'`` let us decide. The Gram
-		        matrix can also be passed as argument.
-		    max_iter : int, optional. Default=5000
-		        The maximum number of iterations
-		    tol : float, optional. Default=1E-4
-		        The tolerance for the optimization: if the updates are
-		        smaller than ``tol``, the optimization code checks the
-		        dual gap for optimality and continues until it is smaller
-		        than ``tol``.
-		    cv : int, cross-validation generator or an iterable, optional. Default=10
-		        Determines the cross-validation splitting strategy.
-		        Possible inputs for cv are:
-		        - integer, to specify the number of folds.
-		        - An object to be used as a cross-validation generator.
-		        - An iterable yielding train/test splits.
-		        For integer/None inputs, :class:`KFold` is used.
-		        Refer :ref:`User Guide <cross_validation>` for the various
-		        cross-validation strategies that can be used here.
-		    verbose : bool or integer. Default=False
-		        Amount of verbosity.
-		    n_jobs : integer, optional. Default=1
-		        Number of CPUs to use during the cross validation. If ``-1``, use
-		        all the CPUs.
-		    positive : bool, optional. Default=False
-		        If positive, restrict regression coefficients to be positive
-		    selection : str, default 'cyclic'
-		        If set to 'random', a random coefficient is updated every iteration
-		        rather than looping over features sequentially by default. This
-		        (setting to 'random') often leads to significantly faster convergence
-		        especially when tol is higher than 1e-4.
-		    random_state : int, RandomState instance, or None (default)
-		        The seed of the pseudo random number generator that selects
-		        a random feature to update. Useful only when selection is set to
-		        'random'.
-		    fit_intercept : boolean, default True
-		        whether to calculate the intercept for this model. If set
-		        to false, no intercept will be used in calculations
-		        (e.g. data is expected to be already centered).
-		    copy_X : boolean, optional, default True
-		        If ``True``, X will be copied; else, it may be overwritten.
 
 
     	---Ridge Logit Options---
@@ -772,25 +724,83 @@ class ML2Estimator:
 			low_val: float, optional. The lowest L-2 penalty parameter value considered in cross-validation. (default=1E-3)
 			high_val: float, optional. The  highest L-2 penalty parameter value considered in cross-validation. (default=1E3)
 
-		---Lasso Logit Options---  
-		    cv: integer, optional. The number of folds used in the leave-one-out cross validation (default=10)
-			Cs: integer or numpy array of floats, optional. If Cs is a numpy array, then the values of Cs will deterimine 
-				the potential L-1 penalty parameter values that the cross validation considers. If Cs takes the value of an
-				integer, then the Cs will be exponential between low_val and high_val(default=10)
-			solver: Determines which solver will be used to estimate the beta values for each given C. All of the solvers
-				are methods in scipy.optimize.minimize. For the solvers 'BFGS', "Newton-CG", and 'CG', an
-				analytical derivative is automatically used (default='BFGS')
-				Potential solver values include:
-					-"BFGS"
-					-"Newton-CG"
-					-"CG"
-					-"Nelder-Mead"
-					-"Powell"
-			solver_options: dict, optional (default=None). Options for the scipy.optimize.minimize method chosen in the solver method.
-				View the options for scipy.optimize.minimize method options to view what the method-specific options are.
-			low_val: float, optional. The lowest L-1 penalty parameter value considered in cross-validation. (default=1E-4)
-			high_val: float, optional. The  highest L-1 penalty parameter value considered in cross-validation. (default=1E4)
+
+
+		----Tree Method options---
+
+			criterion : string, optional (default="mse")
+				The function to measure the quality of a split. Supported criteria
+				are "mse" for the mean squared error, which is equal to variance
+				reduction as feature selection criterion, and "mae" for the mean
+				 absolute error.
+			splitter : string, optional (default="best")
+				The strategy used to choose the split at each node. Supported
+				strategies are "best" to choose the best split and "random" to choose
+				the best random split.
+			max_features : int, float, string or None, optional (default=None)
+				the number of features to consider when looking for the best split:
+				- If int, then consider `max_features` features at each split.
+				- If float, then `max_features` is a percentage and
+					`int(max_features * n_features)` features are considered at each split.
+				- If "auto", then `max_features=n_features`.
+				- If "sqrt", then `max_features=sqrt(n_features)`.
+				- If "log2", then `max_features=log2(n_features)`.
+				- If None, then `max_features=n_features`.
+					Note: the search for a split does not stop until at least one
+					valid partition of the node samples is found, even if it requires to
+					effectively inspect more than ``max_features`` features.
+			min_samples_split : int, float, optional (default=2)
+				The minimum number of samples required to split an internal node:
+				- If int, then consider `min_samples_split` as the minimum number.
+				- If float, then `min_samples_split` is a percentage and
+					`ceil(min_samples_split * n_samples)` are the minimum
+					number of samples for each split.
+					Added float values for percentages.
+			min_samples_leaf : int, float, optional (default=1)
+				The minimum number of samples required to be at a leaf node:
+				- If int, then consider `min_samples_leaf` as the minimum number.
+				- If float, then `min_samples_leaf` is a percentage and
+					`ceil(min_samples_leaf * n_samples)` are the minimum
+					number of samples for each node.
+					Added float values for percentages.
+			min_weight_fraction_leaf : float, optional (default=0.)
+				The minimum weighted fraction of the sum total of weights (of all
+				the input samples) required to be at a leaf node. Samples have
+				equal weight when sample_weight is not provided.
+			max_leaf_nodes : int or None, optional (default=None)
+				Grow a tree with ``max_leaf_nodes`` in best-first fashion.
+				Best nodes are defined as relative reduction in impurity.
+				If None then unlimited number of leaf nodes.
+			random_state : int, RandomState instance or None, optional (default=None)
+				If int, random_state is the seed used by the random number generator;
+				If RandomState instance, random_state is the random number generator;
+				If None, the random number generator is the RandomState instance used
+				by `np.random`.
+			min_impurity_split : float, optional (default=1e-7)
+				Threshold for early stopping in tree growth. If the impurity
+				of a node is below the threshold, the node is a leaf.
+				.. versionadded:: 0.18
+			presort : bool, optional (default=False)
+				Whether to presort the data to speed up the finding of best splits in
+				fitting. For the default settings of a decision tree on large
+				datasets, setting this to true may slow down the training process.
+				When using either a smaller dataset or a restricted depth, this may
+				speed up the training.
+			n_jobs : int, default=1
+				Number of jobs to run in parallel.
+			cv : int, cross-validation generator or an iterable, optional (default=10)
+				Determines the cross-validation splitting strategy.
+				Possible inputs for cv are:
+					- integer, to specify the number of folds in a `(Stratified)KFold`,
+					- An object to be used as a cross-validation generator.
+					- An iterable yielding train, test splits.
+			search_range_low: int, optional. Default=1.
+			search_range_high: int, optional. Default=10.
+				This method uses a cross-validated grid search to estimate the optimal max_depth
+				that is inclusively between search_range_low and search_range_high
 	
+
+
 	Attributes
 	----------
 		method_class: The initialized instance of the class of mahcine learning method that self.method corresponds to.
@@ -886,16 +896,20 @@ class ML2Estimator:
 		lasso_options={"eps":0.001, "cv":10,"n_alphas":100,"alphas":None,"fit_intercept":True, "precompute":'auto',
 			"max_iter":5000, "tol":0.0001, "copy_X":True, "verbose":False, "n_jobs":1, "positive":False, "random_state":None,
 			"selection":'cyclic'}
-		if self.method_options_binary!=None:
-			if isinstance(self.method_options_binary,dict):
-				for i in self.method_options_binary:
+		if m_options!=None:
+			if isinstance(m_options,dict):
+				for i in m_options:
 					if i in lasso_options:
-						lasso_options[i]=self.method_options_binary[i]
+						lasso_options[i]=m_options[i]
 					else:
-						print(i," not valid")
+						print("Error: ", i," is not a valid option entry")
+						print("valid option entries include:")
+						for i in lasso_options:
+							print(i)
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
+		print (lasso_options)
 		eps=lasso_options["eps"]
 		cv=lasso_options["cv"]
 		n_alphas=lasso_options["n_alphas"]
@@ -920,13 +934,18 @@ class ML2Estimator:
 		if m_options!=None:
 			if isinstance(m_options,dict):
 				for i in m_options:
-					if i in rl_options:
+					if i in ll_options:
 						ll_options[i]=m_options[i]
 					else:
-						print(i," not valid")
+						print("Error: ",i," is not a valid option entry")
+						print("valid option entries include:")
+						for i in ll_options:
+							print(i)
+						raise NameError("Invalid option entry")	
 						raise NameError("Invalid option entry")		
-				else:
-					raise NameError("options must take the form of a dictionary")
+			else:
+				raise NameError("options must take the form of a dictionary")
+		print (ll_options)
 		cv=ll_options["cv"]
 		Cs=ll_options["Cs"]
 		solver=ll_options["solver"]
@@ -945,14 +964,19 @@ class ML2Estimator:
 			"bootstrap":True, "oob_score":False, "n_jobs":1, "random_state":None, "verbose":0, "warm_start":False}
 		if m_options!=None:
 			if isinstance(m_options,dict):
-				for i in m_options_binary:
+				for i in m_options:
 					if i in rf_options:
 						rf_options[i]=m_options[i]
 					else:
-						print(i," not valid")
+						print("Error: ",i," is not a valid option entry")
+						print("valid option entries include:")
+						for i in rf_options:
+							print(i)
+						raise NameError("Invalid option entry")	
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
+		print (rf_options)
 		n_estimators=rf_options["n_estimators"]
 		criterion=rf_options["criterion"]
 		max_depth=rf_options["max_depth"]
@@ -987,10 +1011,15 @@ class ML2Estimator:
 					if i in tree_options:
 						tree_options[i]=m_options[i]
 					else:
-						print(i," not valid")
+						print("Error: ",i," is not a valid option entry")
+						print("valid option entries include:")
+						for i in tree_options:
+							print(i)
+						raise NameError("Invalid option entry")	
 						raise NameError("Invalid option entry")		
-				else:
-					raise NameError("options must take the form of a dictionary")
+			else:
+				raise NameError("options must take the form of a dictionary")
+		print (tree_options)
 		criterion=tree_options["criterion"]
 		splitter=tree_options["splitter"]
 		min_samples_split=tree_options["min_samples_split"]
@@ -1021,10 +1050,15 @@ class ML2Estimator:
 					if i in ada_options:
 						ada_options[i]=m_options[i]
 					else:
-						print(i," not valid")
+						print("Error: ",i," is not a valid option entry")
+						print("valid option entries include:")
+						for i in ada_options:
+							print(i)
+						raise NameError("Invalid option entry")	
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
+		print (ada_options)
 		base_estimator=ada_options["base_estimator"]
 		n_estimators=ada_options["n_estimators"]
 		learning_rate=ada_options["learning_rate"]
@@ -1045,13 +1079,18 @@ class ML2Estimator:
 					if i in ridge_options:
 						ridge_options[i]=m_options[i]
 					else:
-						print(i," not valid")
+						print("Error: ",i," is not a valid option entry")
+						print("valid option entries include:")
+						for i in ridge_options:
+							print(i)
+						raise NameError("Invalid option entry")	
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
+		print (ridge_options)
 		alphas=ridge_options["alphas"]
 		if (isinstance(alphas,int)):
-			alphas=np.linspace(-3*math.log(10),5*math.log(10),alphas)
+			alphas=np.exp(np.linspace(-3*math.log(10),3*math.log(10),alphas))
 		fit_intercept=ridge_options["fit_intercept"]
 		scoring=ridge_options["scoring"]
 		cv=ridge_options["cv"]
@@ -1069,10 +1108,15 @@ class ML2Estimator:
 					if i in rl_options:
 						rl_options[i]=m_options[i]
 					else:
-						print(i," not valid")
+						print("Error: ",i," is not a valid option entry")
+						print("valid option entries include:")
+						for i in rl_options:
+							print(i)
+						raise NameError("Invalid option entry")	
 						raise NameError("Invalid option entry")		
-				else:
-					raise NameError("options must take the form of a dictionary")
+			else:
+				raise NameError("options must take the form of a dictionary")
+		print (rl_options)
 		cv=rl_options["cv"]
 		Cs=rl_options["Cs"]
 		solver=rl_options["solver"]
@@ -1360,5 +1404,3 @@ class ML2Estimator:
 		for i in range(len(X_copy[0])):
 			X_copy[:,i:i+1]=X_copy[:,i:i+1]/np.std(X_copy[:,i:i+1])
 		return X_copy
-
-
