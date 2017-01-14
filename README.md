@@ -9,11 +9,11 @@ ridge, or logistic regressionswith an L-1 or L-2 penalty parameter.
 
 The package contains 3 classes: ML2_Estimator, LassoLogitCV, and RidgeLogitCV.
 
-The [ML2Estimator](ML2Estimator_documentation.md? "ML2Estimator Documentation") class implements both the partial linear estimator and the interactive estimator outlined in Chernozhukov et. al.
+The [ML2Estimator](DoubleML/ML2Estimator_documentation.md? "ML2Estimator Documentation") class implements both the partial linear estimator and the interactive estimator outlined in Chernozhukov et. al.
 
-The [LassoLogitCV](LassoLogitCV_documentation.md? "LassoLogitCV Documentation") class is an implementation of a logistic regression with an L-1 penalty parameter chosen by leave-one-out cross validation. 
+The [LassoLogitCV](DoubleML/LassoLogitCV_documentation.md? "LassoLogitCV Documentation") class is an implementation of a logistic regression with an L-1 penalty parameter chosen by leave-one-out cross validation. 
 
-The [RidgeLogitCV](RidgeLogitCV_documentation.md? "RidgeLogitCV Documentation") class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
+The [RidgeLogitCV](DoubleML/RidgeLogitCV_documentation.md? "RidgeLogitCV Documentation") class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
 
 Installation instructions:
   TO DO
