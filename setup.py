@@ -8,7 +8,7 @@ setup(
   author_email = 'kramer.quist@gmail.com',
   url = 'https://github.com/kquist/DoubleML-Python',
   download_url = 'https://github.com/kquist/DoubleML-Python/0.1', 
-  keywords = ['Double machine learning', 'Neyman machine learning', 'orthogonalization', 'cross-fit machine learning', 'de-biased machine learning']
+  keywords = ['Double machine learning', 'Neyman machine learning', 'orthogonalization', 'cross-fit machine learning', 'de-biased machine learning'],
   classifiers=[
     # How mature is this project? Common values are
     #   3 - Alpha
