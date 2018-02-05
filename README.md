@@ -15,5 +15,6 @@ The [LassoLogitCV](https://github.com/kquist/DoubleML-Python/blob/master/LassoLo
 
 The [RidgeLogitCV](https://github.com/kquist/DoubleML-Python/blob/master/RidgeLogitCV_documentation.md "RidgeLogitCV Documentation") class is an implementation of a logistic regression with an L-2 penatly parameter chosen by leave-one-out cross validation
 
-Installation instructions:
-  TO DO
+The file [example.py](https://github.com/kquist/DoubleML-Python/blob/master/example.py "example") is an example of how to implement the double machine leanring method. This example uses [sipp1991.dta](https://github.com/kquist/DoubleML-Python/blob/master/sipp1991.dta "data"), which is the data used in Chernozhukov and Hansen
+(2004), to estimate the effect of 401(k) eligibility on net financial assets. See "Double Machine 
+Learning for Treatment and Causal Parameters" for more information.
