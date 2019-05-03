@@ -1,4 +1,4 @@
-from DoubleML import ML2Estimator
+from ML2 import ML2Estimator
 import pandas as pd
 import numpy as np
 import scipy.integrate as integrate

@@ -909,7 +909,7 @@ class ML2Estimator:
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
-		print (lasso_options)
+		#print (lasso_options)
 		eps=lasso_options["eps"]
 		cv=lasso_options["cv"]
 		n_alphas=lasso_options["n_alphas"]
@@ -945,7 +945,7 @@ class ML2Estimator:
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
-		print (ll_options)
+		#print (ll_options)
 		cv=ll_options["cv"]
 		Cs=ll_options["Cs"]
 		solver=ll_options["solver"]
@@ -976,7 +976,7 @@ class ML2Estimator:
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
-		print (rf_options)
+		#print (rf_options)
 		n_estimators=rf_options["n_estimators"]
 		criterion=rf_options["criterion"]
 		max_depth=rf_options["max_depth"]
@@ -1019,7 +1019,7 @@ class ML2Estimator:
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
-		print (tree_options)
+		#print (tree_options)
 		criterion=tree_options["criterion"]
 		splitter=tree_options["splitter"]
 		min_samples_split=tree_options["min_samples_split"]
@@ -1058,7 +1058,7 @@ class ML2Estimator:
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
-		print (ada_options)
+		#print (ada_options)
 		base_estimator=ada_options["base_estimator"]
 		n_estimators=ada_options["n_estimators"]
 		learning_rate=ada_options["learning_rate"]
@@ -1087,7 +1087,7 @@ class ML2Estimator:
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
-		print (ridge_options)
+		#print (ridge_options)
 		alphas=ridge_options["alphas"]
 		if (isinstance(alphas,int)):
 			alphas=np.exp(np.linspace(-3*math.log(10),3*math.log(10),alphas))
@@ -1116,7 +1116,7 @@ class ML2Estimator:
 						raise NameError("Invalid option entry")		
 			else:
 				raise NameError("options must take the form of a dictionary")
-		print (rl_options)
+		#print (rl_options)
 		cv=rl_options["cv"]
 		Cs=rl_options["Cs"]
 		solver=rl_options["solver"]
